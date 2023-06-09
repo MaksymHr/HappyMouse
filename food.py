@@ -16,10 +16,22 @@ class Food(pygame.sprite.Sprite):
         """
 
         pygame.sprite.Sprite.__init__(self)
-        self.original_image = pygame.image.load('images\\food.bmp')
+        self.original_image = pygame.image.load('images/cheese.bmp')
         self.image = self.original_image.copy
         self.original_image.set_colorkey((255, 255, 255))
-        self.rect = self.original_image.get_rect(center=(random.randint(0, surface.get_width()), -15))
+
+        # Cheese spawn parameters
+        self.rect = self.original_image.get_rect(
+            center=(
+                # Spawning horizontal coordinates
+                random.randint(
+                    27,
+                    surface.get_width() - 27
+                ),
+                -15  # Spawning altitude
+            )
+        )
+
         self.fall_speed = settings.food_speed
         self.rotate = 0
         self.rotation_speed = 2
@@ -51,10 +63,3 @@ class Food(pygame.sprite.Sprite):
         :return:
         """
         self.kill()
-
-    def upscale(self):
-        """
-        Increase difficulty
-        :return:
-        """
-        self.fall_speed += 1

@@ -1,11 +1,21 @@
-import random
 import pygame.sprite
 
 
 class Mouse(pygame.sprite.Sprite):
-    move_speed = 10
+    """
+    Represented mouse
+    Sprite from images\mouse.bmp
+    """
+
+    move_speed = 10  # Horizontal move speed
 
     def __init__(self, surface):
+        """
+        Create mouse entity
+
+        :param surface:
+        """
+
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load('images\\mouse.bmp')
         self.image.set_colorkey((255, 255, 255))
